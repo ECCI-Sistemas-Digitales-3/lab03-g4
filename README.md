@@ -3,6 +3,12 @@
 
 ## Integrantes
 
+| Integrantes |
+| - |
+| [`Diego Lopez`][Alejo] |
+| [`Daniel Ramirez`][Daniel]||
+| [`Sebastian Martinez`][Sebas]||
+||
 
 ## Documentación
 
@@ -26,3 +32,10 @@
 8. ¿Qué captura el bloque ```try...except``` dentro de ```leer_temperatura()```?
 
 9. ¿Cómo podría modificar el script para guardar las temperaturas en un archivo .```csv```?
+
+
+[//]: # (Referencias)
+
+[Alejo]: <https://github.com/Alejibiris>
+[Daniel]: <https://github.com/D4N1EL-R4M1R3Z>
+[Sebas]: <https://github.com/SebasMtz30>
