@@ -3,6 +3,7 @@
 
 ## Integrantes
 
+# Integrantes
 | Integrantes |
 | - |
 | [`Diego Lopez`][Alejo] |
