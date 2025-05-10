@@ -12,26 +12,49 @@
 
 ## Documentación
 
+# Preguntas sobre el script de monitoreo de temperatura en Raspberry Pi
 
-## Preguntas
+---
 
-1. ¿Qué función cumple ```plt.fignum_exists(self.fig.number)``` en el ciclo principal?
+### 1. ¿Qué función cumple `plt.fignum_exists(self.fig.number)` en el ciclo principal?
 
-2. ¿Por qué se usa ```time.sleep(self.intervalo)``` y qué pasa si se quita?
+Esta función verifica si la ventana de la figura sigue abierta. Devuelve `True` si la figura aún existe y `False` si el usuario la ha cerrado. Se usa para detener el ciclo principal cuando el gráfico se cierra manualmente.
 
-3. ¿Qué ventaja tiene usar ```__init__``` para inicializar listas y variables?
+---
 
-4. ¿Qué se está midiendo con ```self.inicio = time.time()```?
+### 2. ¿Por qué se usa `time.sleep(self.intervalo)` y qué pasa si se quita?
 
-5. ¿Qué hace exactamente ```subprocess.check_output(...)```?
+`time.sleep(self.intervalo)` pausa la ejecución del ciclo por el intervalo de tiempo definido (por defecto, 0.5 segundos). Esto:
 
-6. ¿Por qué se almacena ```ahora = time.time() - self.inicio``` en lugar del tiempo absoluto?
+- Reduce la carga del CPU.
+- Evita que se tomen datos demasiado rápidamente, lo que podría dificultar la visualización.
 
-7. ¿Por qué se usa ```self.ax.clear()``` antes de graficar?
+Si se quita, el ciclo se ejecutaría lo más rápido posible, generando:
 
-8. ¿Qué captura el bloque ```try...except``` dentro de ```leer_temperatura()```?
+- Demasiadas lecturas por segundo.
+- Alto uso de CPU.
+- Gráficas muy densas y poco útiles.
 
-9. ¿Cómo podría modificar el script para guardar las temperaturas en un archivo .```csv```?
+---
+
+### 3. ¿Qué ventaja tiene usar `__init__` para inicializar listas y variables?
+
+El método `__init__` define el estado inicial del objeto:
+
+- Se asegura que cada instancia de la clase tenga sus propias variables (`tiempos`, `temperaturas`, etc.).
+- Facilita la configuración inicial.
+- Permite reutilizar el código creando múltiples instancias con diferentes parámetros (`duracion_max`, `intervalo`, etc.).
+
+---
+
+### 4. ¿Qué se está midiendo con `self.inicio = time.time()`?
+
+Se guarda el **tiempo absoluto del inicio del monitoreo**. Esto permite calcular el **tiempo transcurrido** en segundos desde que comenzó el script usando:
+
+```python
+ahora = time.time() - self.inicio
+
+
 
 
 [//]: # (Referencias)
